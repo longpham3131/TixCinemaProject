@@ -1,0 +1,15 @@
+<div id="movieInfo">
+  <div class="movieInfo__left">
+    <img src="{{ movieShowTimes.hinhAnh }}" alt="" />
+    <div class="movieInfo__detail">
+      <span class="openningDay">
+        {{ movieShowTimes.ngayKhoiChieu | date: "dd.MM.yyyy" }}
+      </span>
+      <p class="movieName">
+        <span class="ageType">C18</span>{{ movieShowTimes.tenPhim }}
+      </p>
+      <p>120 phút - 0 IMDb -</p>
+      <button class="btn btnRed">MUA VÉ</button>
+    </div>
+  </div>
+</div>

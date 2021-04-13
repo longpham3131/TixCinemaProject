@@ -1,0 +1,73 @@
+@import'src/scss/index.scss';
+#toolBox{
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    max-width: 940px;
+    margin: 0 auto;
+    height: 80px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 2;
+    .toolBox__content{
+        display: flex;
+        
+        height: 100%;
+        width: 100%;
+
+        .toolBox__select{
+            height: 100%;
+            position: relative;
+
+            .form-control{
+                position: absolute;
+                top: 20%;
+                border: none;
+                border-radius: 0;
+                width: 98%;
+                // border-right: 1px solid black;
+                &:focus{
+                    border-color: transparent;
+                    box-shadow: none;
+                }
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                height: 50%;
+                top: 50%;
+                transform: translateY(-50%);
+                border-right: 1px solid #fff;
+                border-right-color: rgba(238,238,238,.88);
+            }
+          
+        }
+    
+        .toolBox__selectMovie{
+            flex-grow: 2.5;
+    
+        }
+        .toolBox__selectChild{
+            flex-grow: 1;
+        }
+        .toolBox__btnSubmit{
+            flex-grow: 1;
+            position: relative;
+            padding-left: 10px;
+            button{
+                position: absolute;
+                top: 25%;
+                background-color: #4a4a4a;
+                border: none;
+                &:hover{
+                    background-color: #4a4a4a;
+                }
+            }
+        }
+        
+    }
+  
+}

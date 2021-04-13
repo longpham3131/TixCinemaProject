@@ -1,0 +1,83 @@
+@import 'src/scss/index.scss';
+
+#movieList{
+    .slide{
+        width: 235px;
+        height: 416px;
+        padding: 20px 10px 0;
+        margin-bottom: 25px;
+        &:focus{
+            outline: none;
+        }
+    }
+    .card{
+        border: none;
+        .card-img-top{
+            height: 318px;
+            margin-bottom: 10px;
+        }
+        .card-body{
+            padding: 0;
+          
+            .card-title{
+                font-size: 16px;
+                width: 215px;
+                height: 42px;
+               
+            }
+            .movieList__timeShow{
+                font-size: 13px;
+                margin: 8px 0 15px;
+                color: #4a4a4a;
+            }
+        }
+        
+
+      
+        &:hover{
+            .card-body{
+                display: none;
+            }
+            .btnRed{
+                display: block;
+            }
+        }
+
+
+
+      
+    }
+
+  
+    ::ng-deep{
+        .slick-prev, .slick-next{
+            top: 40%;
+
+            &::before {
+                font-family: "slick";
+                font-size: 60px;
+                line-height: 1;
+                color: #a01313;
+                opacity: 0.75;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+         
+        }
+        .slick-prev{
+            left: -100px;
+
+        }
+        .slick-next{
+            right: -40px;
+        }
+
+        .slick-slide.slick-active{
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
+
+}

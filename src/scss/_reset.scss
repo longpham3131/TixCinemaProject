@@ -1,0 +1,33 @@
+
+.btn{
+    &:focus{
+        box-shadow: none;
+    }
+}
+
+.nav-tabs{
+    border: none;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    .nav-link{
+        font-size: 20px;
+        color: black;
+        transition: all 0.2s;
+        height: 52px;
+        border: none;
+        line-height: 24px;
+        height: 24px;
+        &:hover{
+            border-color: transparent;
+            font-size: 24px;
+        }
+    }
+    .nav-link.active{
+        border: none;
+        color: $text-color-primary;
+        font-size: 24px;
+        background-color: transparent;
+    }
+    
+}

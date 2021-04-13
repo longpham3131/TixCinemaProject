@@ -1,0 +1,23 @@
+<div id="movieList">
+  <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+  >
+    <div ngxSlickItem *ngFor="let movie of movieList" class="slide">
+      <div class="card">
+        <img class="card-img-top" [src]="movie.hinhAnh" alt="" />
+        <div class="card-body">
+          <h4 class="card-title">
+            <span class="ageType">C18</span>
+            {{ movie.tenPhim }}
+          </h4>
+          <p class="movieList__timeShow">120 phút</p>
+        </div>
+        <button class="btn btnRed" routerLink="movie/{{ movie.maPhim }}">
+          Mua vé
+        </button>
+      </div>
+    </div>
+  </ngx-slick-carousel>
+</div>

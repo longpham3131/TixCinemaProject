@@ -1,0 +1,348 @@
+<!-- Header  -->
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light justify-content-center"
+  id="navbarHeader"
+>
+  <a class="navbar-brand" href="#">
+    <img
+      src="../../../../assets/img/web-logo.png"
+      class="logoHeader"
+      width="30"
+      height="30"
+      alt=""
+    />
+  </a>
+
+  <div class="collapse navbar-collapse justify-content-center">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Lịch Chiếu </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Cụm Rạp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tin Tức</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Ứng Dụng</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="headerRight">
+    <button>
+      <img src="../../../../assets/img/avatar.png" alt="" />
+      Đăng Nhập
+    </button>
+  </div>
+</nav>
+<!-- End Header  -->
+
+<!-- Content  -->
+<router-outlet></router-outlet>
+<!-- End Content -->
+
+<!-- Footer  -->
+<div class="col-xs-12 block ng-scope" id="footer">
+  <div class="mainMaxWidth">
+    <div class="row">
+      <div class="col-sm-4 col-xs-12">
+        <p class="title hideOnMobile">TIX</p>
+        <div class="col-sm-6 col-xs-6 noPaddingLeft fontSizeP hideOnMobile">
+          <a ui-sref="main.faq" href="/faq">FAQ</a>
+          <a ui-sref="guildline.guidev2" href="/brand-guideline/"
+            >Brand Guidelines</a
+          >
+        </div>
+        <div
+          class="col-sm-6 col-xs-12 noPaddingLeft fontSizeP ng-scope"
+          ng-if="!isMobile"
+        >
+          <a ui-sref="main.term" href="/thoa-thuan-su-dung"
+            >Thỏa thuận sử dụng</a
+          >
+
+          <a ui-sref="main.policy" href="/chinh-sach-bao-mat"
+            >Chính sách bảo mật</a
+          >
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 hideOnMobile">
+        <p class="title">ĐỐI TÁC</p>
+        <div class="row col-sm-12 col-xs-12 linePartner">
+          <a target="_blank" href="https://www.cgv.vn/" title="CGV">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/cgv.png"
+              style="background-color: #fff"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="http://bhdstar.vn" title="BHD">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/bhd.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="http://galaxycine.vn" title="Galaxy">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/galaxycine.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="http://cinestar.com.vn" title="Cinestar">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/cinestar.png"
+              alt=""
+            />
+          </a>
+          <a
+            target="_blank"
+            href="http://lottecinemavn.com"
+            title="Lotte Cinema"
+          >
+            <img
+              class="iconConnect"
+              src="https://s3img.vcdn.vn/123phim/2018/09/404b8c4b80d77732e7426cdb7e24be20.png"
+              alt=""
+            />
+          </a>
+        </div>
+
+        <div class="row col-sm-12 col-xs-12 linePartner">
+          <a target="_blank" href="https://www.megagscinemas.vn" title="MegaGS">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/megags.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="https://www.betacineplex.vn/" title="Beta">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/bt.jpg"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="http://ddcinema.vn" title="DDC">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/dongdacinema.png"
+              alt=""
+            />
+          </a>
+          <a
+            target="_blank"
+            href="https://touchcinema.com/"
+            title="Touch Cinema"
+          >
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/TOUCH.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="https://cinemaxvn.com/" title="Cinemax">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/cnx.jpg"
+              alt=""
+            />
+          </a>
+        </div>
+
+        <div class="row col-sm-12 col-xs-12 linePartner">
+          <a target="_blank" href="http://starlight.vn/" title="Starlight">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/STARLIGHT.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="https://www.dcine.vn/" title="Dcine">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/dcine.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="https://zalopay.vn/" title="ZaloPay">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/zalopay_icon.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="https://www.payoo.vn/" title="Payoo">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/payoo.jpg"
+              alt=""
+            />
+          </a>
+          <a
+            target="_blank"
+            href="https://www.vietcombank.com.vn/"
+            title="Vietcombank"
+          >
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/VCB.png"
+              alt=""
+            />
+          </a>
+        </div>
+
+        <div class="row col-sm-12 col-xs-12 linePartner">
+          <a
+            target="_blank"
+            href="http://www.agribank.com.vn/"
+            title="Agribank"
+          >
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/AGRIBANK.png"
+              alt=""
+            />
+          </a>
+          <a
+            target="_blank"
+            href="https://www.vietinbank.vn/"
+            title="Vietinbank"
+          >
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/VIETTINBANK.png"
+              alt=""
+            />
+          </a>
+          <a
+            target="_blank"
+            href="https://www.indovinabank.com.vn/"
+            title="IVB"
+          >
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/IVB.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="http://123go.vn" title="123Go">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/123go.png"
+              alt=""
+            />
+          </a>
+          <a target="_blank" href="http://laban.vn" title="La Bàn">
+            <img
+              class="iconConnect"
+              src="../../../../assets/img/laban.png"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 d-flex justify-content-around">
+        <div class="col-xs-6 hideOnMobile text-center">
+          <p class="title">MOBILE APP</p>
+          <a
+            target="_blank"
+            href="https://apps.apple.com/vn/app/tix-%C4%91%E1%BA%B7t-v%C3%A9-nhanh-nh%E1%BA%A5t/id615186197"
+            title="Apple App"
+          >
+            <img
+              class="iconApp"
+              src="../../../../assets/img/apple-logo.png"
+              alt=""
+            />
+          </a>
+          <a
+            target="_blank"
+            href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123"
+            title="Android App"
+          >
+            <img
+              class="iconApp"
+              src="../../../../assets/img/android-logo.png"
+              alt=""
+            />
+          </a>
+        </div>
+        <div class="col-xs-6 text-center">
+          <p class="title hideOnMobile">SOCIAL</p>
+          <a
+            target="_blank"
+            href="https://www.facebook.com/tix.vn/"
+            title="Facebook social"
+          >
+            <img
+              class="iconApp"
+              src="../../../../assets/img/facebook-logo.png"
+              alt=""
+            />
+          </a>
+          <a
+            target="_blank"
+            href="https://zalo.me/tixdatve"
+            title="Zalo social"
+          >
+            <img
+              class="iconApp"
+              src="../../../../assets/img/zalo-logo.png"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="hrFooter" />
+
+    <div class="row">
+      <div class="col-sm-1 col-xs-12 imgFooter">
+        <img
+          class="vngIcon"
+          src="../../../../assets/img/zion-logo.jpg"
+          style="border-radius: 8px"
+          alt=""
+        />
+      </div>
+      <div class="col-sm-9 col-xs-12 infoFooter">
+        <span>TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</span>
+        <span
+          >Địa chỉ: Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, Tp. Hồ Chí
+          Minh, Việt Nam.</span
+        >
+        <span
+          >Giấy chứng nhận đăng ký kinh doanh số: 0101659783,<br />đăng ký thay
+          đổi lần&nbsp;thứ&nbsp;30,
+          ngày&nbsp;22&nbsp;tháng&nbsp;01&nbsp;năm&nbsp;2020 do
+          Sở&nbsp;kế&nbsp;hoạch&nbsp;và&nbsp;đầu&nbsp;tư Thành phố Hồ Chí Minh
+          cấp.</span
+        >
+        <span
+          >Số Điện Thoại (Hotline): 1900&nbsp;545&nbsp;436<br />Email:
+          <a href="mailto:support@tix.vn" style="color: #fb4226"
+            >support@tix.vn</a
+          ></span
+        >
+      </div>
+      <div class="col-sm-2 col-xs-12 imgFooter">
+        <a target="_blank" href="http://online.gov.vn/Home/WebDetails/62782"
+          ><img
+            class="imgBoCo"
+            alt="Bộ Công Thương"
+            title=""
+            src="https://s3img.vcdn.vn/123phim/2020/03/d1e6bd560daa9e20131ea8a0f62e87f8.png"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Footer  -->

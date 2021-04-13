@@ -1,0 +1,66 @@
+#mobileApp{
+    background-image: url(../../../../assets/img/background.jpg);
+    padding: 120px 0 80px 0;
+    background-size: contain;
+    margin-top: 30px;
+    .mobileApp__wrapContent{
+        max-width: 940px;
+        margin: 0 auto;
+        .content__left{
+            padding-top: 60px;
+            .text__Left{
+                color: #fff;
+                font-weight: 700;
+                font-size: xx-large;
+                margin-bottom: 10px;
+            }
+            .text__SmallLeft{
+                color: #fff;
+                font-size: medium;
+            }
+            .button__Left{
+                background-color: #fb4226;
+                padding: 10px 20px;
+                color: #fff;
+                font-size: medium;
+                font-weight: 700;
+                border: none;
+                border-radius: 4px;
+            }
+            .text__AppUnder{
+                color: #fff;
+                padding-top: 10px;
+                .tagA{
+                    color: #fff;
+                    border-bottom: 1px solid #fff;
+                }
+            }
+        }
+        .content__right{
+            position: relative;
+            .phone-img{
+                padding: 0 28%;
+                width: 100%;
+            }
+            #sliderScreen{
+                position: absolute;
+                padding: 1.5% 29.3% 0 29.3%;
+                top: 0;
+                left: 0;
+                width: 100%;
+                
+            }
+        }
+
+    }
+    ::ng-deep{
+        .slick-list {
+            border-radius: 20px;
+        }
+        .slick-slide.slick-active{
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+}

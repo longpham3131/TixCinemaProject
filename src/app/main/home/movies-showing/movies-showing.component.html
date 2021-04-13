@@ -1,0 +1,32 @@
+<div id="moviesShowing">
+  <ul class="nav nav-tabs" id="moviesShowing__myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        id="NowShowing-tab"
+        data-toggle="tab"
+        href="#NowShowing"
+        role="tab"
+        aria-selected="true"
+        >Đang Chiếu</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="ComingSoon-tab"
+        data-toggle="tab"
+        href="#ComingSoon"
+        role="tab"
+        aria-selected="false"
+        >Sắp Chiếu</a
+      >
+    </li>
+  </ul>
+  <div class="tab-content" id="moviesShowing__TabContent">
+    <div class="tab-pane fade show active" id="NowShowing" role="tabpanel">
+      <app-movie-list></app-movie-list>
+    </div>
+    <div class="tab-pane fade" id="ComingSoon" role="tabpanel">2</div>
+  </div>
+</div>

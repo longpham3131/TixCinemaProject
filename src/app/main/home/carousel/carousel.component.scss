@@ -1,0 +1,45 @@
+@import'src/scss/index.scss';
+#CarouselMovie{
+    position: relative;
+    ::ng-deep{
+        .owl-theme{
+            .owl-nav {
+                position: absolute;
+                top: 35%;
+                right: 0;
+                left: 0;
+                .owl-prev, .owl-next{
+                    position:absolute;
+                    width: 50px;
+                    height: 100px;
+                    padding: 20px;
+                    margin: 0;
+                    background-color: transparent;
+                    i{
+                        font-size: 70px;
+                    }
+
+                }
+                .owl-prev{
+                    left: 35px;
+                }
+                .owl-next{
+                    right: 35px;
+                }
+
+            }
+            .owl-dots{
+                position: absolute;
+                bottom: 80px;
+                left: 50%;
+            }
+            .owl-dot.active{
+                span{
+                    background: $text-color-primary;
+                }
+            }
+        }
+    }
+    
+}
+

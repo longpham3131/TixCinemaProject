@@ -1,0 +1,9 @@
+<div class="background py-5">
+  <app-movie-info [movieShowTimes]="movieShowTimes"></app-movie-info>
+  <app-show-times
+    [cinemaShowTimes]="cinema"
+    [movieShowTimes]="movieShowTimes"
+    (handleChangeShowTimeByParent)="changeParentCinema($event)"
+    (handleChangeShowTimeByDate)="renderShowTime($event)"
+  ></app-show-times>
+</div>

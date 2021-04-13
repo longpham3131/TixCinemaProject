@@ -1,0 +1,131 @@
+@import 'src/scss/index.scss';
+// Header 
+#navbarHeader {
+    height: 60px;
+    padding: 20px;
+    .navbar-brand{
+        .logoHeader{
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .navbar-nav{
+        .nav-item.active{
+            .nav-link{
+                color: $text-color-primary;
+            }
+        }
+        .nav-link{
+            color: black;
+            transition: all 0.3s;
+            &:hover{
+                color: $text-color-primary;
+            }
+        }
+        
+        
+    }
+
+    .headerRight{
+        button{
+            outline: none;
+            border: none;
+            background: transparent;
+            img{
+                width: 35px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+        }
+       
+    }
+}
+// End Header
+
+
+
+// Footer 
+#footer {
+    background-color: #222;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #949494;
+    .noPaddingLeft {
+        padding-left: 0;
+    }
+    .mainMaxWidth {
+        max-width: 940px;
+        float: none;
+        margin: auto;
+        clear: both;
+        .title {
+            color: #fff;
+            font-size: 12px;
+        }
+        
+        .fontSizeP {
+            a {
+                font-size: 12px!important;
+                font-size: 80%;
+                font-weight: 700;
+                white-space: nowrap;
+                color: #949494;
+                display: block;
+                transition: all .2s;
+                line-height: 2.3;
+            }
+        }
+        .linePartner {
+            margin-bottom: 15px;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+        }
+        .iconConnect {
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            margin-right: 15px;
+        }
+        .iconApp {
+            background: 0 0;
+            height: 30px;
+            width: auto;
+            margin: 5px;
+        }
+        .hrFooter {
+            border-top: 1px solid #4a4a4a;
+        }
+        .imgFooter {
+            text-align: center;
+            padding: 0;
+            .vngIcon {
+                width: 80px;
+                height: auto;
+            }
+            .imgBoCo {
+                width: 130px;
+                float: right;
+            }
+        }
+        .infoFooter {
+            color: #fff;
+            white-space: nowrap;
+            font-size: 70%;
+
+            span {
+                display: block;
+                line-height: 1.8;
+                color: #949494;
+                font-size: 12px;
+                font-weight: 400;
+                &:first-child{
+                    color: #fff;
+                }
+                
+            }
+        }
+    }
+}
+//End Footer

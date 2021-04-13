@@ -1,0 +1,58 @@
+<div id="complexCinema">
+  <ul class="listParentCinemas">
+    <li *ngFor="let Pcinemas of parentCinemaList; let i = index">
+      <a
+        (click)="showCinema(Pcinemas.maHeThongRap)"
+        [ngClass]="{
+          active:
+            selectPCinema === Pcinemas.maHeThongRap ||
+            (i === 0 && selectPCinema == '')
+        }"
+      >
+        <img src="{{ Pcinemas.logo }}" alt="" />
+      </a>
+    </li>
+  </ul>
+
+  <div class="listCinemas">
+    <div
+      class="cinema"
+      *ngFor="let cinema of CinemaList; let i = index"
+      (click)="ShowTimeMovie(cinema.maCumRap)"
+      [ngClass]="{
+        active:
+          (i === 0 && selectCinema == '') || selectCinema === cinema.maCumRap
+      }"
+    >
+      <p class="cinema__name">{{ cinema.tenCumRap }}</p>
+      <p class="cinema__address">{{ cinema.diaChi }}</p>
+    </div>
+  </div>
+
+  <div class="listMovies">
+    <div class="movie__wrapMovie" *ngFor="let movie of MovieList">
+      <div class="movie__content">
+        <img src="{{ movie.hinhAnh }}" alt="" />
+        <div class="movie__info">
+          <p class="movie__title">
+            <span class="ageType">C18</span> {{ movie.tenPhim }}
+          </p>
+          <p class="movie__moreInfo">120 phút</p>
+        </div>
+      </div>
+      <div class="movie__showTimes">
+        <h5>2D Digital</h5>
+        <div class="row">
+          <div
+            class="col-3"
+            *ngFor="let showTime of renderShowTimeMovieToday(movie)"
+          >
+            <button class="btn">
+              {{ showTime.ngayChieuGioChieu | date: "hh:mm a" }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

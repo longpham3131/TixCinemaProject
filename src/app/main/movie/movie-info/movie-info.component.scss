@@ -1,0 +1,23 @@
+@import 'src/scss/index.scss';
+#movieInfo{
+    max-width: 870px;
+    margin:  0 auto;
+    color: white;
+    display: flex;
+    padding-top: 50px;
+    .movieInfo__left{
+        display: flex;
+        align-items: center;
+        .movieInfo__detail{
+            padding-left: 15px;
+            .movieName{
+                font-size: 25px;
+            }
+            .btnRed{
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+
+}

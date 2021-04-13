@@ -1,0 +1,71 @@
+<div id="mobileApp">
+  <div class="mobileApp__wrapContent">
+    <div class="row">
+      <div class="col-md-6 content__left">
+        <p class="text__Left">Ứng dụng tiện lợi dành cho</p>
+        <p class="text__Left">người yêu điện ảnh</p>
+        <br />
+        <p class="text__SmallLeft">
+          Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi
+          quà hấp dẫn.
+        </p>
+        <br />
+        <button class="button__Left">App miễn phí - Tải về ngay!</button>
+        <p class="text__AppUnder">
+          TIX có hai phiên bản
+          <a
+            class="tagA"
+            target="_blank"
+            href="https://itunes.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197?mt=8"
+            >iOS</a
+          >
+          &
+          <a
+            class="tagA"
+            target="_blank"
+            href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123"
+            >Android</a
+          >
+        </p>
+      </div>
+      <div class="col-md-6 content__right">
+        <img
+          class="img-responsive phone-img"
+          src="../../../../assets/img/mobile.png"
+          alt="Loading..."
+        />
+        <ngx-slick-carousel
+          id="sliderScreen"
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="mobileSlideConfig"
+        >
+          <div ngxSlickItem class="slide">
+            <img src="../../../../assets/img/mobile.jpg" class="w-100" alt="" />
+          </div>
+          <div ngxSlickItem class="slide">
+            <img
+              src="../../../../assets/img/mobile_img_2.jpg"
+              class="w-100"
+              alt=""
+            />
+          </div>
+          <div ngxSlickItem class="slide">
+            <img
+              src="../../../../assets/img/mobile_img_3.jpg"
+              class="w-100"
+              alt=""
+            />
+          </div>
+          <div ngxSlickItem class="slide">
+            <img
+              src="../../../../assets/img/mobile_img_4.jpg"
+              class="w-100"
+              alt=""
+            />
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+</div>

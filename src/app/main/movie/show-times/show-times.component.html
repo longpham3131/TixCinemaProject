@@ -1,0 +1,166 @@
+<div id="showTime" style="padding-top: 150px">
+  <ul class="nav nav-tabs" id="showTimes__myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        id="Showing-tab"
+        data-toggle="tab"
+        href="#Showing"
+        role="tab"
+        aria-selected="true"
+        >Lịch Chiếu</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="Info-tab"
+        data-toggle="tab"
+        href="#Info"
+        role="tab"
+        aria-selected="false"
+        >Thông Tin</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="Evaluate-tab"
+        data-toggle="tab"
+        href="#Evaluate"
+        role="tab"
+        aria-selected="false"
+        >Đánh Giá</a
+      >
+    </li>
+  </ul>
+  <div class="tab-content" id="showTimes__TabContent">
+    <div class="tab-pane fade show active" id="Showing" role="tabpanel">
+      <div class="showTimes__wrapperContent">
+        <ul class="listParentCinemas">
+          <li
+            *ngFor="
+              let PCinema of movieShowTimes.heThongRapChieu;
+              let i = index
+            "
+            (click)="transferParentCinema(PCinema.maHeThongRap)"
+            [ngClass]="{
+              active:
+                (i === 0 && selectParentCinema == '') ||
+                selectParentCinema === PCinema.maHeThongRap
+            }"
+          >
+            <p>
+              <img src="{{ PCinema.logo }}" alt="" />
+              {{ PCinema.tenHeThongRap }}
+            </p>
+          </li>
+        </ul>
+        <div class="listDayShowing">
+          <div class="dayShowing">
+            <div
+              class="day"
+              *ngFor="let day of dayShowList; let i = index"
+              (click)="transferDay(day.maNgayChieu)"
+              [ngClass]="{
+                active:
+                  (i === 0 && selectDay == '') || selectDay === day.maNgayChieu
+              }"
+            >
+              <p>{{ day.thu }}</p>
+              <p>{{ day.ngayChieu }}</p>
+            </div>
+          </div>
+          <div class="showingContent">
+            <div class="movie__wrapMovie">
+              <h4>{{ cinemaShowTimes.tenCumRap }}</h4>
+              <div class="movie__showTimes">
+                <h5>2D Digital</h5>
+                <div class="row">
+                  <div
+                    class="col-3"
+                    *ngFor="let showTime of cinemaShowTimes.lichChieuPhim"
+                  >
+                    <button class="btn">
+                      {{ showTime.ngayChieuGioChieu | date: "hh:mm a" }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="Info" role="tabpanel">
+      <div class="row movieDetail">
+        <div class="col-sm-6 col-xs-12 film left">
+          <div class="row rowLeftInfo">
+            <p class="contentTitle">Ngày công chiếu</p>
+            <p class="contentInfo">
+              {{ movieShowTimes.ngayKhoiChieu | date: "dd.MM.yyyy" }}
+            </p>
+          </div>
+
+          <div class="row rowLeftInfo">
+            <p class="w-30">Đạo diễn</p>
+            <p class="contentInfo"></p>
+          </div>
+
+          <div class="row rowLeftInfo">
+            <p class="contentTitle">Diễn viên</p>
+            <p class="contentInfo"></p>
+          </div>
+
+          <div class="row rowLeftInfo">
+            <p class="contentTitle">Thể Loại</p>
+            <p class="contentInfo"></p>
+          </div>
+
+          <div class="row rowLeftInfo">
+            <p class="contentTitle">Định dạng</p>
+            <p class="contentInfo">2D Digtal</p>
+          </div>
+
+          <div class="row rowLeftInfo">
+            <p class="contentTitle">Quốc Gia SX</p>
+            <p class="contentInfo"></p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 film right">
+          <div class="row rowLeftInfo">
+            <p class="contentTitle">Nội dung</p>
+          </div>
+
+          <div class="row rowLeftInfo">
+            <p class="contentInfoFull description ng-binding">
+              {{ movieShowTimes.moTa }}
+            </p>
+          </div>
+
+          <div class="row rowLeftInfo">
+            <p class="contentInfoFull"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="Evaluate" role="tabpanel">
+      <div class="row isFlex detailMainStyle">
+        <div class="col-sm-12 col-xs-12 dadInputReviewer newDesign">
+          <span class="imgReviewer">
+            <img src="https://picsum.photos/id/237/200/300" alt="" />
+          </span>
+          <input
+            class="inputReviwer"
+            type="text"
+            placeholder="Bạn nghĩ gì về phim này?"
+            readonly="readonly"
+          />
+          <span class="imgReviewerStar">
+            <img src="../../../../assets/img/listStar.png" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
