@@ -1,7 +1,7 @@
 ::ng-deep .mat-focused .mat-form-field-label {
     /*change color of label*/
     font-size: 20px;
-    color: white !important;
+    color: white ;
    }
   
    ::ng-deep.mat-form-field-underline {
@@ -11,11 +11,14 @@
   
   ::ng-deep.mat-form-field-ripple {
    /*change color of underline when focused*/
-   background-color: white !important;;
+   background-color: white !important;
   }
  ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
     font-size: 14px;
-    color: white !important;
+    color: white !important ;
+}
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #f44336  !important;
 }
   .example-form {
     min-width: 150px;

@@ -47,7 +47,10 @@
             class="col-3"
             *ngFor="let showTime of renderShowTimeMovieToday(movie)"
           >
-            <button class="btn">
+            <button
+              class="btn"
+              routerLink="checkOut/{{ showTime.maLichChieu }}"
+            >
               {{ showTime.ngayChieuGioChieu | date: "hh:mm a" }}
             </button>
           </div>

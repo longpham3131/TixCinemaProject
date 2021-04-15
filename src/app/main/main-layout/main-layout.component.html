@@ -31,10 +31,24 @@
   </div>
 
   <div class="headerRight">
-    <button>
+    <button *ngIf="!currentUser" routerLink="/signin">
       <img src="../../../../assets/img/avatar.png" alt="" />
       Đăng Nhập
     </button>
+    <div class="dropdown" *ngIf="currentUser">
+      <button
+        class="btn text-black"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+      >
+        <img src="../../../../assets/img/avatar.png" alt="" />
+        <strong>{{ currentUser.taiKhoan }}</strong>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#" (click)="handleLogut()">Đăng Xuất</a>
+      </div>
+    </div>
   </div>
 </nav>
 <!-- End Header  -->

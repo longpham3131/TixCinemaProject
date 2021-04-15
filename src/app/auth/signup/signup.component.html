@@ -1,27 +1,85 @@
 <h2 class="text-center text-white">Đăng Ký</h2>
-<form class="example-form">
+<form class="example-form" [formGroup]="signupForm" (ngSubmit)="handleSignup()">
   <mat-form-field class="example-full-width">
     <mat-label>Tài Khoản</mat-label>
-    <input matInput />
+    <input matInput formControlName="taiKhoan" />
   </mat-form-field>
-  <br />
+  <div class="errorMessage">
+    <div *ngIf="checkError('taiKhoan')">
+      <mat-error align="start" *ngIf="checkError('taiKhoan', 'required')">
+        Tài khoản đang <strong>Trống</strong>
+      </mat-error>
+      <mat-error
+        align="start"
+        *ngIf="
+          checkError('taiKhoan', 'minlength') ||
+          checkError('taiKhoan', 'maxlength')
+        "
+      >
+        Độ dài tài khoản <strong>6 - 10 kí tự</strong>
+      </mat-error>
+    </div>
+  </div>
   <mat-form-field class="example-full-width">
     <mat-label>Mật Khẩu</mat-label>
-    <input matInput />
+    <input matInput type="password" formControlName="matKhau" />
   </mat-form-field>
+  <div class="errorMessage mb-2">
+    <div *ngIf="checkError('matKhau')">
+      <mat-error align="start" *ngIf="checkError('matKhau', 'required')">
+        Mật khẩu đang <strong>Trống</strong>
+      </mat-error>
+      <mat-error align="start" *ngIf="checkError('matKhau', 'pattern')">
+        Tối thiểu 8 kí tự trong đó phải có
+        <p>
+          <strong>
+            1 kí tự số, 1 chữ thường, 1 chữ hoa, 1 kí tự đặt biệt
+          </strong>
+        </p>
+      </mat-error>
+    </div>
+  </div>
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
-    <input matInput />
+    <input matInput formControlName="email" />
   </mat-form-field>
-  <br />
+  <div class="errorMessage">
+    <div *ngIf="checkError('email')">
+      <mat-error align="start" *ngIf="checkError('email', 'required')">
+        Email đang <strong>Trống</strong>
+      </mat-error>
+      <mat-error align="start" *ngIf="checkError('email', 'email')">
+        Email <strong>Không hợp lệ</strong>
+      </mat-error>
+    </div>
+  </div>
   <mat-form-field class="example-full-width">
     <mat-label>Họ Tên</mat-label>
-    <input matInput />
+    <input matInput formControlName="hoTen" />
   </mat-form-field>
+  <div class="errorMessage">
+    <div *ngIf="checkError('hoTen')">
+      <mat-error align="start" *ngIf="checkError('hoTen', 'required')">
+        Họ tên đang <strong>Trống</strong>
+      </mat-error>
+    </div>
+  </div>
   <mat-form-field class="example-full-width">
     <mat-label>Số điện thoại</mat-label>
-    <input matInput />
+    <input matInput formControlName="soDt" type="tel" />
   </mat-form-field>
-  <br />
-  <button mat-raised-button color="primary">Đăng Ký</button>
+  <div class="errorMessage">
+    <div *ngIf="checkError('soDt')">
+      <mat-error align="start" *ngIf="checkError('soDt', 'required')">
+        Số điện thoại đang <strong>Trống</strong>
+      </mat-error>
+      <mat-error align="start" *ngIf="checkError('soDt', 'pattern')">
+        Số điện thoại <strong>Không hợp lệ</strong>
+      </mat-error>
+    </div>
+    <mat-error align="start" *ngIf="error">
+      {{ error }}
+    </mat-error>
+  </div>
+  <button class="mt-3" mat-raised-button color="primary">Đăng Ký</button>
 </form>

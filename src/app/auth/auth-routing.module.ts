@@ -1,3 +1,4 @@
+import { SignupGuard } from '@/core/guards/signup.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth.component';
@@ -10,7 +11,11 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       { path: 'signin', component: SigninComponent },
-      { path: 'signup', component: SignupComponent },
+      {
+        path: 'signup',
+        canDeactivate: [SignupGuard],
+        component: SignupComponent,
+      },
     ],
   },
 ];

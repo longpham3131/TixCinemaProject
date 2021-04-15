@@ -81,7 +81,10 @@
                     class="col-3"
                     *ngFor="let showTime of cinemaShowTimes.lichChieuPhim"
                   >
-                    <button class="btn">
+                    <button
+                      class="btn"
+                      routerLink="/checkOut/{{ showTime.maLichChieu }}"
+                    >
                       {{ showTime.ngayChieuGioChieu | date: "hh:mm a" }}
                     </button>
                   </div>

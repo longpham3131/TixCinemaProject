@@ -1,14 +1,42 @@
 <h2 class="text-center text-white">Đăng Nhập</h2>
-<form class="example-form">
+<form [formGroup]="signinForm" (ngSubmit)="handleSignin()" class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Tài Khoản</mat-label>
-    <input matInput />
+    <input matInput formControlName="taiKhoan" />
   </mat-form-field>
-  <br />
+  <div style="min-height: 20px">
+    <div *ngIf="checkError('taiKhoan')">
+      <mat-error align="start" *ngIf="checkError('taiKhoan', 'required')">
+        Tài khoản đang <strong>Trống</strong>
+      </mat-error>
+      <mat-error
+        align="start"
+        *ngIf="
+          checkError('taiKhoan', 'minlength') ||
+          checkError('taiKhoan', 'maxlength')
+        "
+      >
+        Độ dài tài khoản <strong>6 - 10 kí tự</strong>
+      </mat-error>
+    </div>
+  </div>
+
   <mat-form-field class="example-full-width">
     <mat-label>Mật Khẩu</mat-label>
-    <input matInput />
+    <input type="password" matInput formControlName="matKhau" />
   </mat-form-field>
-
-  <button mat-raised-button color="warn">Đăng Nhập</button>
+  <div style="min-height: 20px">
+    <div *ngIf="checkError('matKhau')">
+      <mat-error align="start" *ngIf="checkError('matKhau', 'required')">
+        Mật khẩu đang <strong>Trống</strong>
+      </mat-error>
+    </div>
+    <mat-error align="start" *ngIf="error">
+      {{ error }}
+    </mat-error>
+  </div>
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <a routerLink="/signup" class="text-white">Đăng Ký</a>
+    <button mat-raised-button color="warn">Đăng Nhập</button>
+  </div>
 </form>
