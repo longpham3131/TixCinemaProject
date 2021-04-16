@@ -1,1 +1,44 @@
-<p>selected-seat works!</p>
+<div id="rightCheckOut">
+  <div class="rightCheckOut__wrapContent">
+    <div class="total">
+      <p class="cash">0 đ</p>
+    </div>
+    <div class="fillInfoShowTime">
+      <div class="d-flex w-100">
+        <span class="ageType">C18</span>
+        <p class="movieName">{{ checkOut.thongTinPhim.tenPhim }}</p>
+      </div>
+      <div class="contentcinema">
+        <div class="address">
+          <span class="pcinema ng-binding">{{
+            checkOut.thongTinPhim.tenCumRap
+          }}</span>
+        </div>
+        <div class="hour ng-binding">
+          Hôm nay {{ checkOut.thongTinPhim.gioChieu }} -
+          {{ checkOut.thongTinPhim.tenRap }}
+        </div>
+      </div>
+    </div>
+    <div class="selectedSeatList">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Tên ghế</th>
+            <th scope="col">Loại ghế</th>
+            <th scope="col">Giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let seat of selectedSeats">
+            <td>{{ seat.tenGhe }}</td>
+            <td>{{ seat.loaiGhe }}</td>
+            <td>{{ seat.giaVe | currency: "VND" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <button class="btnCheckOut">Đặt vé</button>
+</div>

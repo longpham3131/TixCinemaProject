@@ -1,6 +1,93 @@
-<p>check-out works!</p>
-<app-seat-list></app-seat-list>
-<app-selected-seat></app-selected-seat>
+<div id="checkOut">
+  <div class="checkOut__step">
+    <div class="step__left">
+      <ul>
+        <li class="active">
+          <span class="stepnumber">01 </span> CHỌN GHẾ &amp; THANH TOÁN
+        </li>
+        <li><span class="stepnumber">02 </span> KẾT QUẢ ĐẶT VÉ</li>
+      </ul>
+    </div>
+    <div class="step__right">
+      <div class="imgCircle">
+        <p class="titleDisplay" style="margin: inherit">
+          <img src="https://picsum.photos/id/237/200/300" alt="" />
+          {{ currentUser.taiKhoan }}
+        </p>
+      </div>
+    </div>
+  </div>
 
-{{ checkOut.thongTinPhim.tenPhim }}
-{{ checkOut.thongTinPhim.gioChieu }}
+  <div
+    class="checkOut__left"
+    style="background-image: url('../../assets/img/background.jpg'); left: -22%"
+  >
+    <div class="modalleft"></div>
+  </div>
+
+  <div class="checkOut__seat">
+    <div class="seatWrapper">
+      <div class="topContent row">
+        <div class="lefttitle">
+          <div class="logocinema">
+            <img
+              class="w-100"
+              alt=""
+              src="{{ checkOut.thongTinPhim.hinhAnh }}"
+            />
+          </div>
+          <div class="contentcinema">
+            <p class="address">
+              <span class="pcinema ng-binding">{{
+                checkOut.thongTinPhim.tenCumRap
+              }}</span>
+            </p>
+            <p class="hour ng-binding">
+              Hôm nay - {{ checkOut.thongTinPhim.gioChieu }} -
+              {{ checkOut.thongTinPhim.tenRap }}
+            </p>
+          </div>
+        </div>
+        <div class="righttitle">
+          <p class="info1">thời gian giữ ghế</p>
+          <p class="info2">
+            <span class="minute">00</span>:<span class="second">28</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="seatMap">
+        <img src="../../assets/img/screen.png" alt="" />
+        <app-seat-list
+          [checkOut]="checkOut"
+          (onSelect)="handleSelect($event)"
+        ></app-seat-list>
+        <div class="noteSeats">
+          <div class="typeSeats">
+            <div class="seatInfo">
+              <button class="btnSeat norSeat">01</button>
+              <p>Ghế thường</p>
+            </div>
+            <div class="seatInfo">
+              <button class="btnSeat vipSeat">01</button>
+              <p>Ghế VIP</p>
+            </div>
+            <div class="seatInfo">
+              <button class="btnSeat selectedSeat">01</button>
+              <p>Ghế đang chọn</p>
+            </div>
+            <div class="seatInfo">
+              <button class="btnSeat notSelectSeat">01</button>
+              <p>Ghế đã có người chọn</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-selected-seat
+    [checkOut]="checkOut"
+    [selectedSeats]="selectedSeats"
+  ></app-selected-seat>
+</div>

@@ -1,1 +1,10 @@
-<p>seat-list works!</p>
+<div class="seatList">
+  <div class="row">
+    <div class="seatItemPerRow" *ngFor="let seat of checkOut.danhSachGhe">
+      <app-seat-item
+        [seat]="seat"
+        (onSelect)="handleSelect($event)"
+      ></app-seat-item>
+    </div>
+  </div>
+</div>

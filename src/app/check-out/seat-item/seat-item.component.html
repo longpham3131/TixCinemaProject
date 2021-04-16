@@ -1,1 +1,13 @@
-<p>seat-item works!</p>
+<button
+  class="btnSeat norSeat"
+  [class]="{
+    norSeat: seat.loaiGhe === 'Thuong',
+    vipSeat: seat.loaiGhe === 'Vip',
+    notSelectSeat: seat.daDat,
+    selectedSeat: isSelected
+  }"
+  [disabled]="seat.daDat"
+  (click)="handleSelect()"
+>
+  {{ seat.tenGhe }}
+</button>

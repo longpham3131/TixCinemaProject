@@ -1,0 +1,8 @@
+.seatList{
+    height: 400px;
+    max-width: 900px;
+    margin: 0 auto;
+    .seatItemPerRow{
+        width: calc(100%/16);
+    }
+}

@@ -1,0 +1,20 @@
+.btnSeat{
+    width: 50px;
+    margin: 0 auto;
+    color: white;
+    display: block;
+    border-color: transparent;
+    margin-bottom: 20px;
+}
+.btnSeat.norSeat{
+    background-color: #3e515d;;
+}
+.btnSeat.vipSeat{
+    background-color: #f7b500;
+}
+.btnSeat.selectedSeat{
+    background-color: #44c020;
+}
+.btnSeat.notSelectSeat{
+    background-color: #e7eaec;
+}
