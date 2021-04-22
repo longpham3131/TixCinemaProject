@@ -23,11 +23,7 @@ export class MainLayoutComponent implements OnInit {
     localStorage.removeItem('user');
     this.authService.setCurrentUser(null);
   }
-  toMoviesShowing() {
-    document
-      .getElementById('moviesShowing')
-      ?.scrollIntoView({ behavior: 'smooth' });
-
-    console.log('AAAAA');
+  toSectionSmoothScroll(idSection: string) {
+    document.getElementById(idSection)?.scrollIntoView({ behavior: 'smooth' });
   }
 }

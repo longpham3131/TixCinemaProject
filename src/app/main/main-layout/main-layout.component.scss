@@ -3,6 +3,9 @@
 #navbarHeader {
     height: 60px;
     padding: 20px;
+    position: fixed;
+    z-index: 30;
+    width: 100%;
     .navbar-brand{
         .logoHeader{
             width: 50px;
@@ -21,6 +24,7 @@
             transition: all 0.3s;
             &:hover{
                 color: $text-color-primary;
+                cursor: pointer;
             }
         }
         

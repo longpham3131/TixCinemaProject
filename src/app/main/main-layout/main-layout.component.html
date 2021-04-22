@@ -15,17 +15,37 @@
 
   <div class="collapse navbar-collapse justify-content-center">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" (click)="toMoviesShowing()" href="#">Lịch Chiếu </a>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          (click)="toSectionSmoothScroll('moviesShowing')"
+          routerLinkActive="active"
+          >Lịch Chiếu
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Cụm Rạp</a>
+        <a
+          class="nav-link"
+          (click)="toSectionSmoothScroll('complexCinema')"
+          routerLinkActive="active"
+          >Cụm Rạp</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Tin Tức</a>
+        <a
+          class="nav-link"
+          (click)="toSectionSmoothScroll('news')"
+          routerLinkActive="active"
+          >Tin Tức</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Ứng Dụng</a>
+        <a
+          class="nav-link"
+          (click)="toSectionSmoothScroll('mobileApp')"
+          routerLinkActive="active"
+          >Ứng Dụng</a
+        >
       </li>
     </ul>
   </div>
