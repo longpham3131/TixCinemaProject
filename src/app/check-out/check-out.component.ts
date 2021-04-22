@@ -1,4 +1,4 @@
-import { CheckOutResult } from '@/core/models/checkOut';
+import { DanhSachGhe, ThongTinLichChieuResult } from '@/core/models/checkOut';
 import { AuthService } from '@/core/services/auth.service';
 import { CheckOutService } from '@/core/services/check-out.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,8 +16,9 @@ export class CheckOutComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  checkOut = <CheckOutResult>{};
+  checkOut = <ThongTinLichChieuResult>{};
   currentUser: any = null;
+  totalPrice: number = 0;
   ngOnInit(): void {
     this.ActivatedRoute.params.subscribe({
       next: (params) => {
@@ -39,14 +40,15 @@ export class CheckOutComponent implements OnInit {
     });
   }
 
-  selectedSeats: any[] = [];
+  selectedSeats: DanhSachGhe[] = [];
   handleSelect(seat: any): void {
     if (seat.isSelected) {
       this.selectedSeats.push(seat);
+      this.totalPrice += seat.giaVe;
     } else {
-      // Xóa
+      this.totalPrice -= seat.giaVe;
       this.selectedSeats = this.selectedSeats.filter(
-        (item) => item.id !== seat.id
+        (item) => item.maGhe !== seat.maGhe
       );
     }
   }

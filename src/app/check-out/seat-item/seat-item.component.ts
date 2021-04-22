@@ -11,13 +11,13 @@ export class SeatItemComponent implements OnInit {
 
   @Output() onSelect = new EventEmitter();
   isSelected: boolean = false;
+  totalPrice: number = 0;
   constructor() {
     this.seat = <DanhSachGhe>{};
   }
 
   handleSelect() {
     this.isSelected = !this.isSelected;
-
     this.onSelect.emit({ ...this.seat, isSelected: this.isSelected });
   }
 

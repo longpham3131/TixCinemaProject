@@ -1,4 +1,4 @@
-export interface CheckOutResult {
+export interface ThongTinLichChieuResult {
   thongTinPhim: ThongTinPhim;
   danhSachGhe: DanhSachGhe[];
 }
@@ -23,4 +23,15 @@ export interface ThongTinPhim {
   hinhAnh: string;
   ngayChieu: string;
   gioChieu: string;
+}
+
+export interface CheckOut {
+  maLichChieu: number;
+  danhSachVe: DanhSachVe[];
+  taiKhoanNguoiDung: string;
+}
+
+export interface DanhSachVe {
+  maGhe: number;
+  giaVe: number;
 }

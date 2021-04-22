@@ -1,4 +1,4 @@
-import { CheckOutResult } from '@/core/models/checkOut';
+import { ThongTinLichChieuResult } from '@/core/models/checkOut';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -7,10 +7,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./seat-list.component.scss'],
 })
 export class SeatListComponent implements OnInit {
-  @Input() checkOut: CheckOutResult;
+  @Input() checkOut: ThongTinLichChieuResult;
   @Output() onSelect = new EventEmitter();
   constructor() {
-    this.checkOut = <CheckOutResult>{};
+    this.checkOut = <ThongTinLichChieuResult>{};
   }
 
   handleSelect(seat: any): void {

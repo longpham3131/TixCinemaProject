@@ -1,7 +1,7 @@
 <div id="rightCheckOut">
   <div class="rightCheckOut__wrapContent">
     <div class="total">
-      <p class="cash">0 đ</p>
+      <p class="cash">{{ totalPrice | currency: "VND" }}</p>
     </div>
     <div class="fillInfoShowTime">
       <div class="d-flex w-100">
@@ -40,5 +40,11 @@
     </div>
   </div>
 
-  <button class="btnCheckOut">Đặt vé</button>
+  <button
+    [disabled]="totalPrice === 0"
+    [class]="totalPrice === 0 ? 'btnCheckOut disabled' : 'btnCheckOut'"
+    (click)="handleCheckOut()"
+  >
+    Đặt vé
+  </button>
 </div>

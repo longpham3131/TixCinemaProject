@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CheckOutResult } from '../models/checkOut';
+import { CheckOut, ThongTinLichChieuResult } from '../models/checkOut';
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +9,17 @@ import { CheckOutResult } from '../models/checkOut';
 export class CheckOutService {
   constructor(private http: HttpClient) {}
 
-  getSeatList(checkOutId: string): Observable<CheckOutResult> {
+  getSeatList(checkOutId: string): Observable<ThongTinLichChieuResult> {
     const url =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe';
 
     const params = {
       MaLichChieu: checkOutId,
     };
-    return this.http.get<CheckOutResult>(url, { params });
+    return this.http.get<ThongTinLichChieuResult>(url, { params });
+  }
+  postCheckOut(checkOut: CheckOut) {
+    const url = 'https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe';
+    return this.http.post(url, checkOut);
   }
 }
