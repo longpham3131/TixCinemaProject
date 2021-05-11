@@ -40,9 +40,9 @@
                 "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
                 "node_modules/slick-carousel/slick/slick.scss",
                 "node_modules/slick-carousel/slick/slick-theme.scss",
-            
-              "node_modules/font-awesome/css/font-awesome.min.css",
-              "src/styles.scss"
+                "node_modules/font-awesome/css/font-awesome.min.css",
+                "node_modules/angular-notifier/styles.scss",
+                "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeModule } from './home/home.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { MovieModule } from './movie/movie.module';
+import { UserInfoModule } from './user-info/user-info.module';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: 'movie/:movieId', loadChildren: () => MovieModule },
+      { path: 'info', loadChildren: () => UserInfoModule},
       { path: '', loadChildren: () => HomeModule },
     ],
   },
