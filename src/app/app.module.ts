@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { DataTablesModule } from "angular-datatables";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
@@ -15,6 +15,7 @@ import { NotifierModule } from 'angular-notifier';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    DataTablesModule,
     NotifierModule.withConfig({
       position: {
         horizontal: {

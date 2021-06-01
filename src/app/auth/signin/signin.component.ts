@@ -43,9 +43,14 @@ export class SigninComponent implements OnInit {
         this.authService.setCurrentUser(result);
         // Lưu data  xuống localStorage
         localStorage.setItem('user', JSON.stringify(result));
-
-        // Quay lại trang chủ
-        this.router.navigateByUrl('/');
+        if(result.maLoaiNguoiDung==="KhachHang"){
+          // Quay lại trang chủ
+          this.router.navigateByUrl('/');
+        }
+        else{
+          this.router.navigateByUrl('/admin/dash-board');
+        }
+        
       },
       error: (error) => {
         // gán thông báo từ BE chuyển lên vào thuộc tính error
