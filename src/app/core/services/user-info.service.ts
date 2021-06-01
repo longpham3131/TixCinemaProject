@@ -16,7 +16,7 @@ export class UserInfoService {
       }
     })
    }
-
+   
   getUserInfo(username: UserInfoParam): Observable<UserInfoResult>{
     const url ='https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan';
     return this.http.post<UserInfoResult>(url,username);
