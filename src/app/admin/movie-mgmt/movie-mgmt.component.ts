@@ -8,7 +8,14 @@ import { Subject } from 'rxjs';
   styleUrls: ['./movie-mgmt.component.scss']
 })
 export class MovieMgmtComponent implements OnInit {
-  movieList: MovieResult[]= []
+  movieList: MovieResult[]= [];
+  modalAddEditMovie: any | null = {
+    id: 'AddEditMovies',
+    header: ''
+  } 
+
+
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   constructor(private movieService: MovieService) { }
@@ -33,5 +40,26 @@ export class MovieMgmtComponent implements OnInit {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
+
+  showModalMovie(movie:any){
+    if(movie){
+      this.modalAddEditMovie = {
+        id: 'AddEditMovies',
+        header: 'Chỉnh sửa phim',
+      }
+      console.log("movie", movie)
+    }
+    else{
+      this.modalAddEditMovie = {
+        id: 'AddEditMovies',
+        header: 'Thêm phim',
+      }
+      console.log("Thêm")
+    }
+   
+    ($('#AddEditMovies') as any).modal('show');
+    
+  }
+
 
 }

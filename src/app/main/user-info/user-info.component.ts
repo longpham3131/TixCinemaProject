@@ -1,6 +1,6 @@
-import { ThongTinDATVe, UserInfoParam } from '@/core/models/userInfo';
+import { ThongTinDATVe, UserParam } from '@/core/models/user';
 import { AuthService } from '@/core/services/auth.service';
-import { UserInfoService } from '@/core/services/user-info.service';
+import { UserService } from '@/core/services/user.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -30,7 +30,7 @@ export class UserInfoComponent implements OnInit {
   expandedElement: ThongTinDATVe[] | null = null;
   updateUserForm: FormGroup;
   error: string = '';
-  constructor(private authService: AuthService, private userService: UserInfoService ,private router: Router, notifierService: NotifierService) {
+  constructor(private authService: AuthService, private userService: UserService ,private router: Router, notifierService: NotifierService) {
     this.notifier = notifierService;
     this.updateUserForm = new FormGroup({
       taiKhoan: new FormControl('', [
@@ -54,12 +54,8 @@ export class UserInfoComponent implements OnInit {
     this.authService.currentUser.subscribe({
      
       next: (data:any) => {
-        this.currentUser = data;
-        let userName: UserInfoParam ={
-          taiKhoan: this.currentUser.taiKhoan,
-        }
-        this.userService.getUserInfo(userName).subscribe({
-          next: (data) => {
+        this.userService.getUserDetail(data).subscribe({
+          next: (data:any) => {
             this.ticketList = data.thongTinDatVe;
             console.log(this.ticketList)
             this.updateUserForm = new FormGroup({
@@ -112,7 +108,7 @@ export class UserInfoComponent implements OnInit {
     this.updateUserForm.markAllAsTouched();
     if (this.updateUserForm.invalid) return;
     console.log(this.updateUserForm.value)
-    this.userService.updateUserInfo(this.updateUserForm.value).subscribe({
+    this.userService.updateUser(this.updateUserForm.value).subscribe({
       next: (result) => {
         this.notifier.notify('success', 'Cập nhật thông tin thành công!');
         const valueChange = {...this.currentUser, email: result.email, hoTen: result.hoTen, soDT: result.soDT}
@@ -122,8 +118,6 @@ export class UserInfoComponent implements OnInit {
       error: (error) => {
         this.error = error.error;
         this.notifier.notify('error', this.error);
-        
-        
       },
     });
 

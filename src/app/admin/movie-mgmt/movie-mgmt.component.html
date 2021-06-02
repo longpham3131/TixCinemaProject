@@ -4,7 +4,8 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
       <div class="card-header py-3 text-right">
-         <button class="btn btn-success p-2">Thêm Phim</button>
+         <button class="btn btn-success p-2" (click)="showModalMovie(null)">Thêm Phim</button>
+         <app-dialog [modalId]="modalAddEditMovie.id" [modalHeader]="modalAddEditMovie.header"></app-dialog>
       </div>
       <div class="card-body">
           <div class="table-responsive">
@@ -29,7 +30,7 @@
                         <td>{{movie.ngayKhoiChieu | date: "dd.MM.yyyy"}}</td>
                         <td class="d-flex justify-content-around" style="border-bottom: none;">
                             <button class="btn btn-success"><i class="fa fa-calendar-alt"></i></button>
-                            <button class="btn btn-primary"><i class="fa fa-pen"></i></button>
+                            <button class="btn btn-primary" (click)="showModalMovie(movie)"><i class="fa fa-pen"></i></button>
                             <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                         </td>
                     </tr>
