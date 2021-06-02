@@ -1,6 +1,5 @@
 // Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
 @import "variables.scss";
-@import "src/scss/_reset.scss";
 
 // Import Bootstrap
 @import "../vendor/bootstrap/scss/bootstrap.scss";
@@ -22,3 +21,4 @@
 
 @import "src/scss/components/_ageType.scss";
 @import "src/scss/components/_button.scss";
+@import "src/scss/_reset.scss";

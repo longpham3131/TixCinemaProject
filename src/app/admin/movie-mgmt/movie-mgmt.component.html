@@ -5,7 +5,9 @@
   <div class="card shadow mb-4">
       <div class="card-header py-3 text-right">
          <button class="btn btn-success p-2" (click)="showModalMovie(null)">Thêm Phim</button>
-         <app-dialog [modalId]="modalAddEditMovie.id" [modalHeader]="modalAddEditMovie.header"></app-dialog>
+         <app-dialog [modalId]="modalAddEditMovie.id" [modalHeader]="modalAddEditMovie.header">
+             <app-add-edit-movie [btnSubmitName]="btnSubmitModal" (updateTable)="updateTableList($event)"></app-add-edit-movie>
+         </app-dialog>
       </div>
       <div class="card-body">
           <div class="table-responsive">
@@ -31,7 +33,15 @@
                         <td class="d-flex justify-content-around" style="border-bottom: none;">
                             <button class="btn btn-success"><i class="fa fa-calendar-alt"></i></button>
                             <button class="btn btn-primary" (click)="showModalMovie(movie)"><i class="fa fa-pen"></i></button>
-                            <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#DeleteMovie"><i class="fa fa-times"></i></button>
+                            <app-dialog [modalId]="modalDeteleMovie.id" [modalHeader]="modalDeteleMovie.header" >
+                                <p>Mã Phim: <strong>{{movie.maPhim}}</strong> sẽ được xóa </p>
+                                <hr class="w-100">
+                                <div class="text-right">
+                                  <button class="mr-2"  mat-raised-button color="basic" data-dismiss="modal">Đóng</button>
+                                  <button  mat-raised-button color="warn" (click)="onDeleteMovie(movie.maPhim)" >Xác nhận</button>
+                                </div>
+                              </app-dialog>
                         </td>
                     </tr>
                 </tbody>

@@ -51,4 +51,22 @@ export class MovieService {
     };
     return this.http.get<HeThongRap[]>(url, { params });
   }
+
+  updateMovie(value: any): Observable<any> {
+    const url =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload';
+
+    return this.http.post<HeThongRap[]>(url, value);
+  }
+  addMovie(value: any): Observable<any> {
+    const url =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh';
+
+    return this.http.post<HeThongRap[]>(url, value);
+  }
+  deleteMovie(movieId: any): Observable<any> {
+    const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh?MaPhim=${movieId}`;
+
+    return this.http.delete(url);
+  }
 }

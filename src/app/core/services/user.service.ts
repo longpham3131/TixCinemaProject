@@ -21,7 +21,15 @@ export class UserService {
       'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan';
     return this.http.post<UpdateUser>(url, username);
   }
+  addUser(values: UpdateUser): Observable<any> {
+    const url =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung';
 
+    return this.http.post(url, {
+      ...values,
+      maNhom: 'GP02',
+    });
+  }
   updateUser(values: UpdateUser): Observable<any> {
     const url =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung';
@@ -29,7 +37,11 @@ export class UserService {
     return this.http.put(url, {
       ...values,
       maNhom: 'GP02',
-      maLoaiNguoiDung: 'KhachHang',
     });
+  }
+  deleteUser(username: any): Observable<any> {
+    const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${username}`;
+
+    return this.http.delete(url);
   }
 }

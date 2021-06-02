@@ -1,17 +1,27 @@
 import { UserList } from '@/core/models/user';
 import { UserService } from '@/core/services/user.service';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
+import { Event } from 'jquery';
 @Component({
   selector: 'app-add-edit-user',
   templateUrl: './add-edit-user.component.html',
   styleUrls: ['./add-edit-user.component.scss'],
 })
 export class AddEditUserComponent implements OnInit {
+  @Input() btnSubmitName: string = '';
   dataUser: any = null;
   updateUserForm: FormGroup;
   private notifier: NotifierService;
+  @Output() updateTable: EventEmitter<any> = new EventEmitter<any>();
   error: string = '';
   constructor(
     private userService: UserService,
@@ -41,6 +51,10 @@ export class AddEditUserComponent implements OnInit {
         Validators.required,
         Validators.pattern('(09|03|07|08|05)+([0-9]{8})'),
       ]),
+      maLoaiNguoiDung: new FormControl(
+        this.dataUser ? this.dataUser.maLoaiNguoiDung : '',
+        [Validators.required]
+      ),
     });
   }
   setDataUser(user: any) {
@@ -69,6 +83,10 @@ export class AddEditUserComponent implements OnInit {
         Validators.required,
         Validators.pattern('(09|03|07|08|05)+([0-9]{8})'),
       ]),
+      maLoaiNguoiDung: new FormControl(
+        this.dataUser ? this.dataUser.maLoaiNguoiDung : '',
+        [Validators.required]
+      ),
     });
   }
   ngOnInit(): void {}
@@ -88,14 +106,32 @@ export class AddEditUserComponent implements OnInit {
     this.updateUserForm.markAllAsTouched();
     if (this.updateUserForm.invalid) return;
     console.log(this.updateUserForm.value);
-    // this.userService.updateUser(this.updateUserForm.value).subscribe({
-    //   next: () => {
-    //     this.notifier.notify('success', 'Cập nhật thông tin thành công!');
-    //   },
-    //   error: (error) => {
-    //     this.error = error.error;
-    //     this.notifier.notify('error', this.error);
-    //   },
-    // });
+    if (this.dataUser) {
+      console.log('THIS EDIT');
+      this.userService.updateUser(this.updateUserForm.value).subscribe({
+        next: () => {
+          this.notifier.notify('success', 'Cập nhật thông tin thành công!');
+          this.updateTable.emit(this.updateUserForm.value);
+          ($('#AddEditUser') as any).modal('hide');
+        },
+        error: (error) => {
+          this.error = error.error;
+          this.notifier.notify('error', this.error);
+        },
+      });
+    } else {
+      console.log('THIS ADD');
+      this.userService.addUser(this.updateUserForm.value).subscribe({
+        next: () => {
+          this.notifier.notify('success', 'Thêm người dùng thành công!');
+          this.updateTable.emit(this.updateUserForm.value);
+          ($('#AddEditUser') as any).modal('hide');
+        },
+        error: (error) => {
+          this.error = error.error;
+          this.notifier.notify('error', this.error);
+        },
+      });
+    }
   }
 }

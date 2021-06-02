@@ -1,1 +1,117 @@
-<p>add-edit-movie works!</p>
+
+<form
+class="example-form row"
+[formGroup]="updateMovieForm"
+(ngSubmit)="handleSubmit()"
+>
+<div class="row p-4 ">
+  <div class="col-6">
+    <mat-form-field class="example-full-width w-100">
+      <mat-label>Mã Phim</mat-label>
+      <input matInput formControlName="maPhim" />
+    </mat-form-field>
+    <div class="errorMessage">
+      <div *ngIf="checkError('maPhim')">
+        <mat-error
+          align="start"
+          *ngIf="checkError('maPhim', 'required')"
+        >
+          Mã Phim đang <strong>Trống</strong>
+        </mat-error>
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <mat-form-field appearance="fill">
+      <mat-label>Ngày Khởi Chiếu</mat-label>
+      <input matInput formControlName="ngayKhoiChieu" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="errorMessage">
+      <div *ngIf="checkError('ngayKhoiChieu')">
+        <mat-error
+          align="start"
+          *ngIf="checkError('ngayKhoiChieu', 'required')"
+        >
+        Ngày Khởi Chiếu đang <strong>Trống</strong>
+        </mat-error>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <mat-form-field class="example-full-width w-100">
+      <mat-label>Tên Phim</mat-label>
+      <input matInput autocomplete="on" type="text" formControlName="tenPhim" />
+    </mat-form-field>
+    <div class="errorMessage mb-2">
+      <div *ngIf="checkError('tenPhim')">
+        <mat-error
+          align="start"
+          *ngIf="checkError('tenPhim', 'required')"
+        >
+          Tên Phim đang <strong>Trống</strong>
+        </mat-error>
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <mat-form-field class="example-full-width w-100">
+      <mat-label>Đánh Giá</mat-label>
+      <input matInput formControlName="danhGia" type="number" />
+    </mat-form-field>
+    <div class="errorMessage">
+      <div *ngIf="checkError('danhGia')">
+        <mat-error align="start" *ngIf="checkError('danhGia', 'required')">
+          Đánh Giá đang <strong>Trống</strong>
+        </mat-error>
+       
+      </div>
+
+    </div>
+  </div>
+  <div class="col-6">
+    <mat-form-field class="example-full-width w-100">
+      <mat-label>Trailer</mat-label>
+      <input matInput formControlName="trailer" />
+    </mat-form-field>
+    <div class="errorMessage">
+      <div *ngIf="checkError('trailer')">
+        <mat-error
+          align="start"
+          *ngIf="checkError('trailer', 'required')"
+        >
+          Trailer đang <strong>Trống</strong>
+        </mat-error>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+      
+    <div class="form-group text-left">
+      <mat-label >Hình Ảnh</mat-label>
+      <input type="file" formControlName="hinhAnh" class="form-control-file pt-2" >
+    </div>
+  </div>
+
+  <div class="col-12">
+    <mat-form-field class="example-full-width w-100">
+      <mat-label>Mô Tả</mat-label>
+      <textarea matInput formControlName="moTa"></textarea>
+    </mat-form-field>
+  </div>
+</div>
+
+<hr class="w-100">
+<div class="w-100 text-center">
+  <mat-error align="center" *ngIf="error">
+    {{ error }}
+  </mat-error>
+  <button class="mt-3 px-5" mat-raised-button color="primary">
+    {{btnSubmitName}}
+  </button>
+</div>
+</form>
