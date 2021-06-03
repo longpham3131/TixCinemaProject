@@ -41,7 +41,14 @@ export class MovieService {
       'https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap';
     return this.http.get<HeThongRapChieu[]>(url);
   }
-
+  getCinemaCluster(cinemaSystemId: any): Observable<any> {
+    const url =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong';
+    const params = {
+      maHeThongRap: cinemaSystemId,
+    };
+    return this.http.get<any>(url, { params });
+  }
   getShowTimesInCinemas(PCinemaID: string): Observable<HeThongRap[]> {
     const url =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap';
@@ -67,5 +74,11 @@ export class MovieService {
     const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${movieId}`;
 
     return this.http.delete(url);
+  }
+  addShowTime(value: any): Observable<any> {
+    const url =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu';
+    console.log('value');
+    return this.http.post<any>(url, value);
   }
 }

@@ -8,7 +8,7 @@ class="example-form row"
   <div class="col-6">
     <mat-form-field class="example-full-width w-100">
       <mat-label>Chọn hệ thống rạp</mat-label>
-      <mat-select (change)="onChangeCinemaSystem">
+      <mat-select (selectionChange)="onChangeCinemaSystem($event)">
         <mat-option *ngFor="let cinemaSystem of cinemaSystems" [value]="cinemaSystem.maHeThongRap">
           {{cinemaSystem.tenHeThongRap}}
         </mat-option>
@@ -17,7 +17,7 @@ class="example-form row"
 
     <mat-form-field class="example-full-width w-100">
         <mat-label>Chọn cụm rạp</mat-label>
-        <mat-select (change)="onChangeCinemaCluster">
+        <mat-select (selectionChange)="onChangeCinemaCluster($event)">
           <mat-option *ngFor="let cinemaCluster of cinemaClusters" [value]="cinemaCluster.maCumRap">
             {{cinemaCluster.tenCumRap}}
           </mat-option>
@@ -26,7 +26,7 @@ class="example-form row"
 
       <mat-form-field class="example-full-width w-100">
         <mat-label>Chọn cụm rạp</mat-label>
-        <mat-select>
+        <mat-select formControlName="maRap">
           <mat-option *ngFor="let cinema of cinemas" [value]="cinema.maRap">
             {{cinema.tenRap}}
           </mat-option>
@@ -45,13 +45,14 @@ class="example-form row"
     
   </div>
   <div class="col-6">
-    <mat-form-field appearance="fill">
+    <!-- <mat-form-field appearance="fill">
       <mat-label>Ngày chiếu giờ chiếu</mat-label>
-      <input matInput formControlName="ngayKhoiChieu" [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
+    
+    </mat-form-field> -->
+    <div class="form-group">
+        <label for="">Ngày chiếu giờ chiếu</label>
+        <input type="datetime-local" formControlName="ngayChieuGioChieu" >
+    </div>
     <!-- <mat-form-field class="example-full-width w-100">
         <mat-label>Thời lượng phim</mat-label>
         <input matInput  type="number" formControlName="tenPhim" />
@@ -59,7 +60,7 @@ class="example-form row"
 
       <mat-form-field class="example-full-width w-100">
         <mat-label>Giá vé</mat-label>
-        <input matInput  type="number" formControlName="tenPhim" />
+        <input matInput  type="number" formControlName="giaVe" />
       </mat-form-field>
     <!-- <div class="errorMessage">
       <div *ngIf="checkError('ngayKhoiChieu')">

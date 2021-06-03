@@ -23,11 +23,11 @@ export class MovieMgmtComponent implements AfterViewInit, OnDestroy, OnInit {
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-
   movieList: MovieResult[] = [];
   dataMovieEdit: any | null;
   private notifier: NotifierService;
   btnSubmitModal: string = '';
+
   modalAddEditMovie: any | null = {
     id: 'AddEditMovies',
     header: '',

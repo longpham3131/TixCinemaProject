@@ -1,8 +1,3 @@
-import {
-  LstCumRap,
-  LstLichChieuTheoPhim,
-  ThongTinHeThongRap,
-} from './../../core/models/movie';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
@@ -13,7 +8,7 @@ import { MovieService } from '@/core/services/movie.service';
   styleUrls: ['./add-edit-show-times.component.scss'],
 })
 export class AddEditShowTimesComponent implements OnInit {
-  @Input() movieId: number = 0;
+  @Input() movieId: number = -1;
   showTimeForm: any;
   cinemaSystems: any;
   cinemaClusters: any;
@@ -27,7 +22,6 @@ export class AddEditShowTimesComponent implements OnInit {
   ) {
     this.notifier = notifierService;
     this.showTimeForm = new FormGroup({
-      maPhim: new FormControl('', [Validators.required]),
       ngayChieuGioChieu: new FormControl('', [Validators.required]),
       maRap: new FormControl('', [Validators.required]),
       giaVe: new FormControl('', [Validators.required]),
@@ -38,9 +32,73 @@ export class AddEditShowTimesComponent implements OnInit {
     this.error = '';
   }
 
-  ngOnInit(): void {}
-  onChangeCinemaSystem() {}
-  onChangeCinemaCluster() {}
+  ngOnInit(): void {
+    this.movieService.getParentCinemas().subscribe({
+      next: (result) => {
+        this.cinemaSystems = result;
+      },
+    });
 
-  handleSubmit() {}
+    this.changeFormatDate('2021-06-17T03:15');
+  }
+  onChangeCinemaSystem(e: any) {
+    this.movieService.getCinemaCluster(e.value).subscribe({
+      next: (result) => {
+        this.cinemaClusters = result;
+        console.log('data', this.cinemaClusters);
+      },
+    });
+  }
+  onChangeCinemaCluster(e: any) {
+    this.cinemas = this.cinemaClusters.find(
+      (cluster: any) => cluster.maCumRap === e.value
+    ).danhSachRap;
+  }
+  changeFormatDate(value: string) {
+    const time = value.slice(10);
+    //cắt chuỗi 2021-06-17 => 17-06-2021
+    const dateTime =
+      value.slice(8, 10) + '/' + value.slice(5, 7) + '/' + value.slice(0, 4);
+    console.log('result', dateTime);
+    return dateTime;
+  }
+  checkError(field: string, type?: string) {
+    const control = this.showTimeForm.get(field);
+
+    if (type) {
+      return control?.errors?.[type];
+    }
+
+    return control?.invalid && (control?.touched || control?.dirty);
+  }
+  handleSubmit() {
+    this.showTimeForm.markAllAsTouched();
+    if (this.showTimeForm.invalid) return;
+
+    console.log('data', {
+      ...this.showTimeForm.value,
+      maPhim: this.movieId,
+      ngayChieuGioChieu: this.changeFormatDate(
+        this.showTimeForm.value.ngayChieuGioChieu
+      ),
+    });
+    this.movieService
+      .addShowTime({
+        ...this.showTimeForm.value,
+        maPhim: this.movieId,
+        ngayChieuGioChieu: this.changeFormatDate(
+          this.showTimeForm.value.ngayChieuGioChieu
+        ),
+      })
+      .subscribe({
+        next: () => {
+          this.notifier.notify('success', 'Thêm lịch chiếu thành công');
+          ($('#ShowTimeMovie') as any).modal('hide');
+        },
+        error: (error) => {
+          this.error = error.error;
+          this.notifier.notify('error', this.error);
+        },
+      });
+  }
 }

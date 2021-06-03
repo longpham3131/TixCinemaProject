@@ -88,9 +88,9 @@ export class AddEditMovieComponent implements OnInit {
   }
 
   handleSubmit() {
-    // Xử lý chặn khi submit nhưng input có lỗi
-    // this.updateMovieForm.markAllAsTouched();
-    // if (this.updateMovieForm.invalid) return;
+    //Xử lý chặn khi submit nhưng input có lỗi
+    this.updateMovieForm.markAllAsTouched();
+    if (this.updateMovieForm.invalid) return;
     console.log(this.updateMovieForm.value);
 
     const formData = new FormData();
