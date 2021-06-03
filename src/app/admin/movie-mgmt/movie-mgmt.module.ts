@@ -12,9 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AddEditMovieComponent } from '../add-edit-movie/add-edit-movie.component';
+import { AddEditShowTimesComponent } from '../add-edit-show-times/add-edit-show-times.component';
 
 @NgModule({
-  declarations: [MovieMgmtComponent, AddEditMovieComponent],
+  declarations: [
+    MovieMgmtComponent,
+    AddEditMovieComponent,
+    AddEditShowTimesComponent,
+  ],
   imports: [
     CommonModule,
     MovieMgmtRoutingModule,

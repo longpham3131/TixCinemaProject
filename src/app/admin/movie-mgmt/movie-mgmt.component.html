@@ -32,6 +32,9 @@
                         <td>{{movie.ngayKhoiChieu | date: "dd.MM.yyyy"}}</td>
                         <td class="d-flex justify-content-around" style="border-bottom: none;">
                             <button class="btn btn-success"><i class="fa fa-calendar-alt"></i></button>
+                            <app-dialog [modalId]="modalShowTimeMovie.id" [modalHeader]="modalShowTimeMovie.header">
+                                <app-add-edit-show-times [movieId]="movie.maPhim"></app-add-edit-show-times>
+                            </app-dialog>
                             <button class="btn btn-primary" (click)="showModalMovie(movie)"><i class="fa fa-pen"></i></button>
                             <button class="btn btn-danger" data-toggle="modal" data-target="#DeleteMovie"><i class="fa fa-times"></i></button>
                             <app-dialog [modalId]="modalDeteleMovie.id" [modalHeader]="modalDeteleMovie.header" >

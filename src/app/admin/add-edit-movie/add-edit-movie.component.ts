@@ -10,11 +10,12 @@ import { NotifierService } from 'angular-notifier';
 })
 export class AddEditMovieComponent implements OnInit {
   @Input() btnSubmitName: string = '';
-  dataMovie: any = null;
+  dataMovie: any;
   updateMovieForm: FormGroup;
   private notifier: NotifierService;
   @Output() updateTable: EventEmitter<any> = new EventEmitter<any>();
   error: string = '';
+  fileImage: any;
   constructor(
     private movieService: MovieService,
     notifierService: NotifierService
@@ -37,9 +38,7 @@ export class AddEditMovieComponent implements OnInit {
       trailer: new FormControl(this.dataMovie ? this.dataMovie.trailer : '', [
         Validators.required,
       ]),
-      hinhAnh: new FormControl(this.dataMovie ? this.dataMovie.hinhAnh : '', [
-        Validators.required,
-      ]),
+      hinhAnh: new FormControl('', [Validators.required]),
       moTa: new FormControl(this.dataMovie ? this.dataMovie.moTa : '', [
         Validators.required,
       ]),
@@ -47,13 +46,16 @@ export class AddEditMovieComponent implements OnInit {
   }
   setDataMovie(user: any) {
     this.dataMovie = user;
+    this.fileImage = user?.hinhAnh;
     console.log('data', this.dataMovie);
     this.updateMovieForm = new FormGroup({
-      maPhim: new FormControl(this.dataMovie ? this.dataMovie.maPhim : '', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(10),
-      ]),
+      maPhim: new FormControl(
+        {
+          value: this.dataMovie ? this.dataMovie.maPhim : '',
+          disabled: this.dataMovie ? true : false,
+        },
+        [Validators.required]
+      ),
       ngayKhoiChieu: new FormControl(
         this.dataMovie ? this.dataMovie.ngayKhoiChieu : '',
         [Validators.required]
@@ -67,9 +69,7 @@ export class AddEditMovieComponent implements OnInit {
       trailer: new FormControl(this.dataMovie ? this.dataMovie.trailer : '', [
         Validators.required,
       ]),
-      hinhAnh: new FormControl(this.dataMovie ? this.dataMovie.hinhAnh : '', [
-        Validators.required,
-      ]),
+      hinhAnh: new FormControl('', [Validators.required]),
       moTa: new FormControl(this.dataMovie ? this.dataMovie.moTa : '', [
         Validators.required,
       ]),
@@ -89,12 +89,22 @@ export class AddEditMovieComponent implements OnInit {
 
   handleSubmit() {
     // Xử lý chặn khi submit nhưng input có lỗi
-    this.updateMovieForm.markAllAsTouched();
-    if (this.updateMovieForm.invalid) return;
+    // this.updateMovieForm.markAllAsTouched();
+    // if (this.updateMovieForm.invalid) return;
     console.log(this.updateMovieForm.value);
+
+    const formData = new FormData();
+    Object.keys(this.updateMovieForm.controls).forEach((key) => {
+      if (key === 'hinhAnh') {
+        formData.append(key, this.fileImage);
+      } else {
+        formData.append(key, this.updateMovieForm.get(key)?.value);
+      }
+    });
+    console.log('Data', formData.get('hinhAnh'));
     if (this.dataMovie) {
       console.log('THIS EDIT');
-      this.movieService.updateMovie(this.updateMovieForm.value).subscribe({
+      this.movieService.updateMovie(formData).subscribe({
         next: () => {
           this.notifier.notify(
             'success',
@@ -109,8 +119,8 @@ export class AddEditMovieComponent implements OnInit {
         },
       });
     } else {
-      console.log('THIS ADD');
-      this.movieService.addMovie(this.updateMovieForm.value).subscribe({
+      console.log('THIS ADD', formData.get('hinhAnh'));
+      this.movieService.addMovie(formData).subscribe({
         next: () => {
           this.notifier.notify('success', 'Thêm phim thành công!');
           this.updateTable.emit(this.updateMovieForm.value);
@@ -122,5 +132,8 @@ export class AddEditMovieComponent implements OnInit {
         },
       });
     }
+  }
+  onHandleChange(e: any) {
+    this.fileImage = e.target.files[0];
   }
 }

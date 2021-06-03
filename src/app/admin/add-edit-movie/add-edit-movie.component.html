@@ -93,7 +93,17 @@ class="example-form row"
       
     <div class="form-group text-left">
       <mat-label >Hình Ảnh</mat-label>
-      <input type="file" formControlName="hinhAnh" class="form-control-file pt-2" >
+      <input (change)="onHandleChange($event)" type="file" formControlName="hinhAnh" class="form-control-file pt-2" >
+    </div>
+    <div class="errorMessage">
+      <div *ngIf="checkError('hinhAnh')">
+        <mat-error
+          align="start"
+          *ngIf="checkError('hinhAnh', 'required')"
+        >
+          Hình ảnh đang <strong>Trống</strong>
+        </mat-error>
+      </div>
     </div>
   </div>
 
@@ -102,6 +112,16 @@ class="example-form row"
       <mat-label>Mô Tả</mat-label>
       <textarea matInput formControlName="moTa"></textarea>
     </mat-form-field>
+    <div class="errorMessage">
+      <div *ngIf="checkError('moTa')">
+        <mat-error
+          align="start"
+          *ngIf="checkError('moTa', 'required')"
+        >
+          Mô tả đang <strong>Trống</strong>
+        </mat-error>
+      </div>
+    </div>
   </div>
 </div>
 

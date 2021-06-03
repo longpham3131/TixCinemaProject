@@ -56,16 +56,15 @@ export class MovieService {
     const url =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload';
 
-    return this.http.post<HeThongRap[]>(url, value);
+    return this.http.post<any>(url, { ...value, maNhom: 'GP02' });
   }
   addMovie(value: any): Observable<any> {
     const url =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh';
-
-    return this.http.post<HeThongRap[]>(url, value);
+    return this.http.post<any>(url, { ...value, maNhom: 'GP02' });
   }
   deleteMovie(movieId: any): Observable<any> {
-    const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh?MaPhim=${movieId}`;
+    const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${movieId}`;
 
     return this.http.delete(url);
   }

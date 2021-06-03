@@ -36,6 +36,10 @@ export class MovieMgmtComponent implements AfterViewInit, OnDestroy, OnInit {
     id: 'DeleteMovie',
     header: 'Xóa phim',
   };
+  modalShowTimeMovie: any | null = {
+    id: 'ShowTimeMovie',
+    header: 'Tạo lịch chiếu phim',
+  };
   constructor(
     private movieService: MovieService,
     notifierService: NotifierService
@@ -128,7 +132,7 @@ export class MovieMgmtComponent implements AfterViewInit, OnDestroy, OnInit {
       error: (error) => {
         // this.error = error.error;
         this.notifier.notify('error', error.error);
-        console.log('error', error.error);
+        console.log('error', error);
       },
     });
   }

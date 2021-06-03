@@ -1,0 +1,123 @@
+
+<form
+class="example-form row"
+[formGroup]="showTimeForm"
+(ngSubmit)="handleSubmit()"
+>
+<div class="row p-4 ">
+  <div class="col-6">
+    <mat-form-field class="example-full-width w-100">
+      <mat-label>Chọn hệ thống rạp</mat-label>
+      <mat-select (change)="onChangeCinemaSystem">
+        <mat-option *ngFor="let cinemaSystem of cinemaSystems" [value]="cinemaSystem.maHeThongRap">
+          {{cinemaSystem.tenHeThongRap}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width w-100">
+        <mat-label>Chọn cụm rạp</mat-label>
+        <mat-select (change)="onChangeCinemaCluster">
+          <mat-option *ngFor="let cinemaCluster of cinemaClusters" [value]="cinemaCluster.maCumRap">
+            {{cinemaCluster.tenCumRap}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width w-100">
+        <mat-label>Chọn cụm rạp</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let cinema of cinemas" [value]="cinema.maRap">
+            {{cinema.tenRap}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <!-- <div class="errorMessage">
+      <div *ngIf="checkError('maPhim')">
+        <mat-error
+          align="start"
+          *ngIf="checkError('maPhim', 'required')"
+        >
+          Mã Phim đang <strong>Trống</strong>
+        </mat-error>
+        
+      </div> -->
+    
+  </div>
+  <div class="col-6">
+    <mat-form-field appearance="fill">
+      <mat-label>Ngày chiếu giờ chiếu</mat-label>
+      <input matInput formControlName="ngayKhoiChieu" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- <mat-form-field class="example-full-width w-100">
+        <mat-label>Thời lượng phim</mat-label>
+        <input matInput  type="number" formControlName="tenPhim" />
+      </mat-form-field> -->
+
+      <mat-form-field class="example-full-width w-100">
+        <mat-label>Giá vé</mat-label>
+        <input matInput  type="number" formControlName="tenPhim" />
+      </mat-form-field>
+    <!-- <div class="errorMessage">
+      <div *ngIf="checkError('ngayKhoiChieu')">
+        <mat-error
+          align="start"
+          *ngIf="checkError('ngayKhoiChieu', 'required')"
+        >
+        Ngày Khởi Chiếu đang <strong>Trống</strong>
+        </mat-error>
+      </div>
+    </div> -->
+  </div>
+
+</div>
+
+<hr class="w-100">
+<div class="w-100 text-center">
+  <mat-error align="center" *ngIf="error">
+    {{ error }}
+  </mat-error>
+  <button class="mt-3 px-5" mat-raised-button color="primary">
+    Thêm lịch chiếu
+  </button>
+</div>
+</form>
+
+<!-- <div class="table-responsive">
+    <table class="table table-bordered" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable width="100%" cellspacing="0"  >
+        <thead>
+          <tr >
+            <th>Mã lịch chiếu</th>
+            <th>Hệ thống rạp</th>
+            <th>Cụm rạp</th>
+            <td>Ngày chiếu giờ chiếu</td>
+            <td>Giá vé</td>
+            <td>Thời lượng phim</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let showTime of showTimeList; let i = index">
+            <td>{{showTime.maLichChieu}}</td>
+            <td>{{user.matKhau}}</td>
+            <td>{{user.hoTen}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.soDt}}</td>
+            <td class="d-flex justify-content-around" style="border-bottom: none;">
+              <button class="btn btn-primary" (click)="showModalUser(user)"><i class="fa fa-pen"></i></button>
+              <button class="btn btn-danger"  data-toggle="modal" data-target="#DeleteUser"><i class="fa fa-times"></i></button>
+              <app-dialog [modalId]="modalDeleteUser.id" [modalHeader]="modalDeleteUser.header" >
+                <p>Tài khoản: <strong>{{user.taiKhoan}}</strong> sẽ được xóa </p>
+                <hr class="w-100">
+                <div class="text-right">
+                  <button class="mr-2"  mat-raised-button color="basic" data-dismiss="modal">Đóng</button>
+                  <button  mat-raised-button color="warn" (click)="onDeleteUser(user.taiKhoan)" >Xác nhận</button>
+                </div>
+              </app-dialog>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+  </div> -->
