@@ -78,7 +78,6 @@ export class MovieService {
   addShowTime(value: any): Observable<any> {
     const url =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu';
-    console.log('value');
     return this.http.post<any>(url, value);
   }
 }

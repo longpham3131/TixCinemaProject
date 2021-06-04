@@ -55,10 +55,17 @@ export class AddEditShowTimesComponent implements OnInit {
     ).danhSachRap;
   }
   changeFormatDate(value: string) {
-    const time = value.slice(10);
+    const time = value.slice(11);
     //cắt chuỗi 2021-06-17 => 17-06-2021
     const dateTime =
-      value.slice(8, 10) + '/' + value.slice(5, 7) + '/' + value.slice(0, 4);
+      value.slice(8, 10) +
+      '/' +
+      value.slice(5, 7) +
+      '/' +
+      value.slice(0, 4) +
+      ' ' +
+      time +
+      ':00';
     console.log('result', dateTime);
     return dateTime;
   }
@@ -98,6 +105,7 @@ export class AddEditShowTimesComponent implements OnInit {
         error: (error) => {
           this.error = error.error;
           this.notifier.notify('error', this.error);
+          console.log('ERROR', this.error);
         },
       });
   }
