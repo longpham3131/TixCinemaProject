@@ -15,6 +15,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { ComplexCinemaComponent } from './complex-cinema/complex-cinema.component';
 import { MobileAppComponent } from './mobile-app/mobile-app.component';
+import { ComponentsModule } from '@/shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,13 @@ import { MobileAppComponent } from './mobile-app/mobile-app.component';
     MovieListComponent,
     ComplexCinemaComponent,
     MobileAppComponent,
-
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     CarouselModule,
     SlickCarouselModule,
+    ComponentsModule,
   ],
 })
 export class HomeModule {}

@@ -6,35 +6,47 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/core/services/movie.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent implements OnInit {
-  constructor(
-    private ActivatedRoute: ActivatedRoute,
-    private movieService: MovieService
-  ) {}
-
   movieShowTimes: MovieShowTimes = <MovieShowTimes>{};
 
   cinema = <CumRapChieu>{};
 
   selectedPCinema: string = '';
+
+  loadingCompleted: Boolean;
+  constructor(
+    private ActivatedRoute: ActivatedRoute,
+    private movieService: MovieService,
+    private spinner: NgxSpinnerService
+  ) {
+    this.loadingCompleted = false;
+  }
+
   ngOnInit(): void {
     // activatedRoute: service của angular cung cấp các phương thức để làm việc với url
+    this.spinner.show();
     this.ActivatedRoute.params.subscribe({
       next: (params) => {
         // Lấy dc mã phim => dùng mã phim gọi API
         this.movieService.getShowTimesMovie(params.movieId).subscribe({
           next: (result) => {
             this.movieShowTimes = result;
-            this.selectedPCinema = this.movieShowTimes.heThongRapChieu[0].maHeThongRap.slice();
+            this.selectedPCinema =
+              this.movieShowTimes.heThongRapChieu[0].maHeThongRap.slice();
             this.renderShowTime();
+            this.loadingCompleted = true;
+            this.spinner.hide();
           },
           error: (error) => {
+            this.loadingCompleted = true;
             console.log(error);
+            this.spinner.hide();
           },
         });
       },

@@ -72,7 +72,7 @@
             </div>
           </div>
           <div class="showingContent">
-            <div class="movie__wrapMovie">
+            <div *ngIf="cinemaShowTimes.lichChieuPhim.length > 0 ; else showTimeNull" class="movie__wrapMovie">
               <h4>{{ cinemaShowTimes.tenCumRap }}</h4>
               <div class="movie__showTimes">
                 <h5>2D Digital</h5>
@@ -91,6 +91,11 @@
                 </div>
               </div>
             </div>
+            <ng-template #showTimeNull>
+              <div class="d-flex justify-content-center align-items-center">
+                <h5 class="pt-5"><strong>Rạp hiện tại không có xuất chiếu</strong></h5>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>

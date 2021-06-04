@@ -30,32 +30,42 @@
   </div>
 
   <div class="listMovies">
-    <div class="movie__wrapMovie" *ngFor="let movie of MovieList">
-      <div class="movie__content">
-        <img src="{{ movie.hinhAnh }}" alt="" />
-        <div class="movie__info">
-          <p class="movie__title">
-            <span class="ageType">C18</span> {{ movie.tenPhim }}
-          </p>
-          <p class="movie__moreInfo">120 phút</p>
+    <ng-template #MovieListPage>
+      <div  class="movie__wrapMovie" *ngFor=" let movie of MovieList">
+        <div class="movie__content">
+          <img src="{{ movie.hinhAnh }}" alt="" />
+          <div class="movie__info">
+            <p class="movie__title">
+              <span class="ageType">C18</span> {{ movie.tenPhim }}
+            </p>
+            <p class="movie__moreInfo">120 phút</p>
+          </div>
         </div>
-      </div>
-      <div class="movie__showTimes">
-        <h5>2D Digital</h5>
-        <div class="row">
-          <div
-            class="col-3"
-            *ngFor="let showTime of renderShowTimeMovieToday(movie)"
-          >
-            <button
-              class="btn"
-              routerLink="checkOut/{{ showTime.maLichChieu }}"
+        <div class="movie__showTimes">
+          <h5>2D Digital</h5>
+          <div class="row">
+            <div
+              class="col-3"
+              *ngFor="let showTime of renderShowTimeMovieToday(movie)"
             >
-              {{ showTime.ngayChieuGioChieu | date: "hh:mm a" }}
-            </button>
+              <button
+                class="btn"
+                routerLink="checkOut/{{ showTime.maLichChieu }}"
+              >
+                {{ showTime.ngayChieuGioChieu | date: "hh:mm a" }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
+    </ng-template>
+    
+    <div *ngIf="MovieList.length < 1 ; else MovieListPage">
+      <div class="d-flex justify-content-center align-items-center">
+        <h5 class="pt-5"><strong>Rạp hiện tại không có xuất chiếu</strong></h5>
+      </div>
+   
     </div>
+
   </div>
 </div>

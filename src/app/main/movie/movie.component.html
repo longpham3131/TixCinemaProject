@@ -1,4 +1,4 @@
-<div class="background py-5">
+<div *ngIf="loadingCompleted; else loading " class="background py-5">
   <app-movie-info [movieShowTimes]="movieShowTimes"></app-movie-info>
   <app-show-times
     [cinemaShowTimes]="cinema"
@@ -7,3 +7,7 @@
     (handleChangeShowTimeByDate)="renderShowTime($event)"
   ></app-show-times>
 </div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

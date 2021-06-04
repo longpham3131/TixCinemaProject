@@ -1,4 +1,4 @@
-<div id="checkOut">
+<div *ngIf="loadingCompleted; else loading " id="checkOut">
   <div class="checkOut__step">
     <div class="step__left">
       <ul>
@@ -93,3 +93,6 @@
     [totalPrice]="totalPrice"
   ></app-selected-seat>
 </div>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

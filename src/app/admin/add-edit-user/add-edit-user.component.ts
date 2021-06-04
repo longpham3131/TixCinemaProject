@@ -1,16 +1,8 @@
-import { UserList } from '@/core/models/user';
 import { UserService } from '@/core/services/user.service';
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
-import { Event } from 'jquery';
+
 @Component({
   selector: 'app-add-edit-user',
   templateUrl: './add-edit-user.component.html',
