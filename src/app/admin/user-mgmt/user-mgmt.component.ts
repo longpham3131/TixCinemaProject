@@ -123,8 +123,21 @@ export class UserMgmtComponent implements AfterViewInit, OnDestroy, OnInit {
       },
       error: (error) => {
         // this.error = error.error;
-        this.notifier.notify('error', error.error);
-        console.log('error', error.error);
+        if (typeof error.error === 'object' && error.error !== null) {
+          const index = this.userList.findIndex(
+            (user) => user.taiKhoan === username
+          );
+          this.userList.splice(index, 1);
+
+          this.notifier.notify('success', 'Xóa thành công');
+
+          this.reloadTable();
+
+          ($('#DeleteUser') as any).modal('hide');
+        } else {
+          this.notifier.notify('error', error.error);
+          console.log('error', error.error);
+        }
       },
     });
   }

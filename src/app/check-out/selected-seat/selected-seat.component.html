@@ -40,6 +40,8 @@
     </div>
   </div>
 
+
+
   <button
     [disabled]="totalPrice === 0"
     [class]="totalPrice === 0 ? 'btnCheckOut disabled' : 'btnCheckOut'"
@@ -47,4 +49,75 @@
   >
     Đặt vé
   </button>
+</div>
+<div class="modal fade" id="ModalBill">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header text-center d-block">
+        <h4 class="modal-title">Đặt vé thành công</h4>
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div id="Bill">
+          <div class="rightCheckOut__wrapContent">
+            
+            <div class="fillInfoShowTime">
+              <div class="d-flex w-100">
+                <span class="ageType">C18</span>
+                <p class="movieName">{{ checkOut.thongTinPhim.tenPhim }}</p>
+              </div>
+              <div class="contentcinema">
+                <div class="address">
+                  <span class="pcinema ng-binding">{{
+                    checkOut.thongTinPhim.tenCumRap
+                  }}</span>
+                </div>
+                <div class="hour ng-binding">
+                  Hôm nay {{ checkOut.thongTinPhim.gioChieu }} -
+                  {{ checkOut.thongTinPhim.tenRap }}
+                </div>
+              </div>
+            </div>
+            <div class="selectedSeatList">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên ghế</th>
+                    <th scope="col">Loại ghế</th>
+                    <th scope="col">Giá</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let seat of selectedSeats">
+                    <td>{{ seat.tenGhe }}</td>
+                    <td>{{ seat.loaiGhe }}</td>
+                    <td>{{ seat.giaVe | currency: "VND" }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="total" style="font-size: 25px;">
+              <p class="cash w-100 text-right">Tổng tiền: {{ totalPrice | currency: "VND" }}</p>
+            </div>
+            <div class="text-center" style="border-bottom: 1px dashed #e9e9e9;">
+              <p>Thông tin đặt vé của bạn đã được lưu tại mục <strong>Danh sách vé</strong>  </p>
+            </div>
+            <div class="text-center pt-4 ">
+              <p>Cảm ơn bạn đã mua vé tại trang web chúng tôi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer text-center d-block">
+        <button type="button" class="btn btn-primary" (click)="backToHome()" >Quay lại trang chủ ... {{countDown}}s</button>
+      </div>
+
+    </div>
+  </div>
 </div>
